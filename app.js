@@ -72,3 +72,14 @@ const startPieces = [
   king,
   rook,
 ];
+
+/* createBoard creates a chessboard */
+function createBoard() {
+  // there are total of 64 pieces including the empty spaces
+  // for each piece create a div
+  startPieces.forEach((startPiece) => {
+    const square = document.createElement("div");
+    // add the classList
+    square.classList.add("square");
+  });
+}
