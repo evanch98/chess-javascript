@@ -83,6 +83,10 @@ function createBoard() {
     square.classList.add("square");
     // change the innerHTML of the div to startPiece
     square.innerHTML = startPiece;
+
+    // if the square has a first child make it draggable
+    square.firstChild?.setAttribute("draggable", true);
+
     // give an unique attribute to each square
     square.setAttribute("square-id", i);
     // square.classList.add("beige");
