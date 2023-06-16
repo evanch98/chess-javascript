@@ -94,6 +94,10 @@ function createBoard() {
     } else {
       square.classList.add(i % 2 === 0 ? "brown" : "beige");
     }
+
+    if (i <= 15) {
+      square.firstChild.firstChild.classList.add("black");
+    }
     // add to the gameboard
     gameBoard.append(square);
   });
