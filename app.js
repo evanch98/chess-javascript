@@ -85,7 +85,15 @@ function createBoard() {
     square.innerHTML = startPiece;
     // give an unique attribute to each square
     square.setAttribute("square-id", i);
-    square.classList.add("beige");
+    // square.classList.add("beige");
+    // to get the row we are currently in
+    const row = Math.floor((63 - i) / 8) + 1;
+    // every other row
+    if (row % 2 === 0) {
+      square.classList.add(i % 2 === 0 ? "beige" : "brown");
+    } else {
+      square.classList.add(i % 2 === 0 ? "brown" : "beige");
+    }
     // add to the gameboard
     gameBoard.append(square);
   });
