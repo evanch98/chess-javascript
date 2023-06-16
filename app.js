@@ -81,5 +81,10 @@ function createBoard() {
     const square = document.createElement("div");
     // add the classList
     square.classList.add("square");
+    square.classList.add("beige");
+    // add to the gameboard
+    gameBoard.append(square);
   });
 }
+
+createBoard();
