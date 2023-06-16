@@ -95,8 +95,13 @@ function createBoard() {
       square.classList.add(i % 2 === 0 ? "brown" : "beige");
     }
 
+    // to set the color of the chess pieces
     if (i <= 15) {
       square.firstChild.firstChild.classList.add("black");
+    }
+
+    if (i >= 48) {
+      square.firstChild.firstChild.classList.add("white");
     }
     // add to the gameboard
     gameBoard.append(square);
