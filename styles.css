@@ -24,3 +24,7 @@
 .brown {
   background-color: rgb(169, 43, 43);
 }
+
+.black {
+  fill: rgb(28, 28, 28);
+}
