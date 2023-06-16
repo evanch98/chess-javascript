@@ -113,3 +113,20 @@ function createBoard() {
 }
 
 createBoard();
+
+// retrieve all the squares in the gameboard
+const allSquares = document.querySelectorAll("#gameboard .square");
+
+// loop through each square
+allSquares.forEach((square) => {
+  // add event listener to each square
+  square.addEventListener("dragstart", dragStart);
+});
+
+let startPosition; // start position of the piece
+let draggedElement; // the element that is being dragged
+
+function dragStart(e) {
+  startPosition = e.target.parentNode.getAttribute("square-id");
+  draggedElement = e.target;
+}
