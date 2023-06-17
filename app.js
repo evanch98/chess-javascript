@@ -155,6 +155,7 @@ function dragDrop(e) {
     if (takenByOpponent && valid) {
       e.target.parentNode.append(draggedElement); // add the dragged element to the square
       e.target.remove(); // remove the piece at the square
+      checkForWin();
       changePlayer(); // change the player
       return;
     }
@@ -170,6 +171,7 @@ function dragDrop(e) {
     // if the move is valid, move the piece and change player
     if (valid) {
       e.target.append(draggedElement);
+      checkForWin();
       changePlayer();
       return;
     }
@@ -201,6 +203,25 @@ function reverseIds() {
 function revertIds() {
   const allSquares = document.querySelectorAll(".square");
   allSquares.forEach((square, i) => square.setAttribute("square-id", i));
+}
+
+// to check if a player has won
+function checkForWin() {
+  const kings = Array.from(document.querySelectorAll("#king"));
+  if (!kings.some((king) => king.firstChild.contains("white"))) {
+    infoDisplay.innerHTML = "Black player wins!";
+    const allSquares = document.querySelectorAll(".square");
+    allSquares.forEach((square) =>
+      square.firstChild?.setAttribute("draggable", false)
+    );
+  }
+  if (!kings.some((king) => king.firstChild.contains("black"))) {
+    infoDisplay.innerHTML = "White player wins!";
+    const allSquares = document.querySelectorAll(".square");
+    allSquares.forEach((square) =>
+      square.firstChild?.setAttribute("draggable", false)
+    );
+  }
 }
 
 function checkIfValid(target) {
