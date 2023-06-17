@@ -8,6 +8,7 @@
 .square {
   height: 40px;
   width: 40px;
+  position: relative;
 }
 
 /* for the svg in the div with a class square */
@@ -15,6 +16,18 @@
   height: 30px;
   width: 30px;
   margin: 5px;
+  position: relative;
+  z-index: -9;  /* to make sure that the svg is always behind the square */
+}
+
+path {
+  position: relative;
+  z-index: -10;  /* to make sure that the path is always behind the svg */
+}
+
+.piece {
+  position: relative;
+  z-index: 9;  /* to make sure that the piece will always be the first */
 }
 
 .beige {
