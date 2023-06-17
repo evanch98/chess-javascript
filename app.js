@@ -4,6 +4,8 @@ const playerDisplay = document.querySelector("#player");
 const infoDisplay = document.querySelector("#info-display");
 
 const width = 8; // a chess board is made up of 8x8 tiles
+let playerGo = "black"; // to keep track of the player
+playerDisplay.textContent = "black"; // to display which player's turn
 
 // starting pieces on the chess board
 const startPieces = [
@@ -136,8 +138,42 @@ function dragStart(e) {
 
 // function to handle dragOver
 function dragOver(e) {
-  e.preventDefault();  // to prevent the default actions
+  e.preventDefault(); // to prevent the default actions
 }
 
 // function to handle dragDrop
-function dragDrop() {}
+function dragDrop(e) {
+  e.stopPropagation(); // prevent any propagation of the same event
+
+  const taken = e.target.classList.contains("piece"); // check if the target square contains the chess piece
+  // e.target.parentNode.append(draggedElement);  // add the dragged element to the square
+  // e.target.remove();  // remove the piece at the square
+  changePlayer();
+}
+
+// to change the player's turn
+function changePlayer() {
+  if (playerGo === "black") {
+    reverseIds();
+    playerGo = "white";
+    playerDisplay.textContent = "white";
+  } else {
+    revertIds();
+    playerGo = "black";
+    playerDisplay.textContent = "black";
+  }
+}
+
+/* to reverse the ids */
+function reverseIds() {
+  const allSquares = document.querySelectorAll(".square");
+  allSquares.forEach((square, i) =>
+    square.setAttribute("square-id", width * width - 1 - i)
+  );
+}
+
+/* to revert the ids */
+function revertIds() {
+  const allSquares = document.querySelectorAll(".square");
+  allSquares.forEach((square, i) => square.setAttribute("square-id", i));
+}
