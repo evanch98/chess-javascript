@@ -147,14 +147,15 @@ function dragDrop(e) {
 
   const correctGo = draggedElement.firstChild.classList.contains(playerGo); // check if the current turn is the dragged element's turn
   const taken = e.target.classList.contains("piece"); // check if the target square contains the chess piece
+  const valid = checkIfValid(e.target); // to check if the move is a valid move
   const opponentGo = playerGo === "white" ? "black" : "white"; // change the opponent
   const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo); // check if the current contains the opponent piece
   if (correctGo) {
     // if the current target is taken by opponent and the move is valid
     if (takenByOpponent && valid) {
-      e.target.parentNode.append(draggedElement);  // add the dragged element to the square
-      e.target.remove();  // remove the piece at the square
-      changePlayer();  // change the player
+      e.target.parentNode.append(draggedElement); // add the dragged element to the square
+      e.target.remove(); // remove the piece at the square
+      changePlayer(); // change the player
       return;
     }
 
@@ -162,7 +163,14 @@ function dragDrop(e) {
     // just inform the player that they cannot make the move they are trying to make
     if (taken && !takenByOpponent) {
       infoDisplay.textContent = "you cannot go here!";
-      setTimeout(() => infoDisplay.textContent = "", 2000);
+      setTimeout(() => (infoDisplay.textContent = ""), 2000);
+      return;
+    }
+
+    // if the move is valid, move the piece and change player
+    if (valid) {
+      e.target.append(draggedElement);
+      changePlayer();
       return;
     }
   }
