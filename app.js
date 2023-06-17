@@ -203,6 +203,40 @@ function revertIds() {
   allSquares.forEach((square, i) => square.setAttribute("square-id", i));
 }
 
-function checkIfValid() {
-  
+function checkIfValid(target) {
+  // get the target id
+  const targetId =
+    Number(target.getAttribute("square-id")) ||
+    Number(target.parentNode.getAttribute("square-id"));
+
+  const startId = Number(startPosition); // start id
+  const piece = draggedElement.id; // the id of the piece that is being dragged
+
+  // to determine the valid move of a piece based on the type of the piece
+  switch (piece) {
+    case "pawn":
+      const starterRow = [8, 9, 10, 11, 12, 13, 14, 15]; // starting row of the pawn
+
+      if (
+        // if the pawn is at the starter row, that pawn can be moved two squares
+        // e.g. startId = 8, width * 2 = 16, targetId can be 24 because 16 + 8 = 24
+        // in other words, the pawn can be moved up to two squares if it is at the starter row
+        (starterRow.includes(startId) && startId + width * 2 === targetId) ||
+        // if the startId + width is equal to the targetId, that means, the pawn is moved one square
+        // it is also a valid move
+        startId + width === targetId ||
+        // a pawn can move diagonally only if the target square has an opponent on it
+        // width - 1 to make the pawn move diagonally before the square in front of it
+        (startId + width - 1 === targetId &&
+          document.querySelector(`[square-id="${startId + width - 1}"]`)
+            .firstChild) ||
+        // a pawn can move diagonally only if the target square has an opponent on it
+        // width - 1 to make the pawn move diagonally after the square in front of it
+        (startId + width + 1 === targetId &&
+          document.querySelector(`[square-id="${startId + width + 1}"]`)
+            .firstChild)
+      ) {
+        return true;
+      }
+  }
 }
