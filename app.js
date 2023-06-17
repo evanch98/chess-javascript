@@ -202,3 +202,7 @@ function revertIds() {
   const allSquares = document.querySelectorAll(".square");
   allSquares.forEach((square, i) => square.setAttribute("square-id", i));
 }
+
+function checkIfValid() {
+  
+}
