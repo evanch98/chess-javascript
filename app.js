@@ -121,12 +121,23 @@ const allSquares = document.querySelectorAll("#gameboard .square");
 allSquares.forEach((square) => {
   // add event listener to each square
   square.addEventListener("dragstart", dragStart);
+  square.addEventListener("dragover", dragOver);
+  square.addEventListener("drop", dragDrop);
 });
 
 let startPosition; // start position of the piece
 let draggedElement; // the element that is being dragged
 
+// function to handle dragStart
 function dragStart(e) {
   startPosition = e.target.parentNode.getAttribute("square-id");
   draggedElement = e.target;
 }
+
+// function to handle dragOver
+function dragOver(e) {
+  e.preventDefault();  // to prevent the default actions
+}
+
+// function to handle dragDrop
+function dragDrop() {}
