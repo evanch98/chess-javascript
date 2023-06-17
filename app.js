@@ -145,7 +145,10 @@ function dragOver(e) {
 function dragDrop(e) {
   e.stopPropagation(); // prevent any propagation of the same event
 
+  const correctGo = draggedElement.firstChild.classList.contains(playerGo); // check if the current turn is the dragged element's turn
   const taken = e.target.classList.contains("piece"); // check if the target square contains the chess piece
+  const opponentGo = playerGo === "white" ? "black" : "white"; // change the opponent
+  const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo); // check if the current contains the opponent piece
   // e.target.parentNode.append(draggedElement);  // add the dragged element to the square
   // e.target.remove();  // remove the piece at the square
   changePlayer();
