@@ -430,23 +430,23 @@ function checkIfValid(target) {
             .firstChild) ||
         // direction 3 END
         // direction 4 START
-        startId - width - 1 === targetId ||
-        (startId - width * 2 - 2 === targetId &&
+        startId + width - 1 === targetId ||
+        (startId + width * 2 - 2 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild) ||
-        (startId - width * 3 - 3 === targetId &&
+        (startId + width * 3 - 3 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
             .firstChild) ||
-        (startId - width * 4 - 4 === targetId &&
+        (startId + width * 4 - 4 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 3 - 3}"]`)
             .firstChild) ||
-        (startId - width * 5 - 5 === targetId &&
+        (startId + width * 5 - 5 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -455,7 +455,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 4 - 4}"]`)
             .firstChild) ||
-        (startId - width * 6 - 6 === targetId &&
+        (startId + width * 6 - 6 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -466,7 +466,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 5 - 5}"]`)
             .firstChild) ||
-        (startId - width * 7 - 7 === targetId &&
+        (startId + width * 7 - 7 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
