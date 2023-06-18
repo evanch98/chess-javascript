@@ -160,7 +160,7 @@ function dragDrop(e) {
       return;
     }
 
-    // if the current taken is taken by other pieces on the same team, there is nothing to do
+    // if the current target is taken by other pieces on the same team, there is nothing to do
     // just inform the player that they cannot make the move they are trying to make
     if (taken && !takenByOpponent) {
       infoDisplay.textContent = "you cannot go here!";
