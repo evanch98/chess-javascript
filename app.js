@@ -654,6 +654,7 @@ function checkIfValid(target) {
       break;
     case "queen":
       if (
+        // direction 1 START
         startId + width + 1 === targetId ||
         (startId + width * 2 + 2 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
